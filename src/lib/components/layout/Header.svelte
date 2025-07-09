@@ -1,5 +1,6 @@
 <script>
 	import { openModal } from '$lib/state/modalState.svelte';
+	import CtaButton from '$lib/components/elements/CtaButton.svelte';
 </script>
 
 <header
@@ -10,6 +11,8 @@
 	<p class="font-poppins text-center text-xl leading-6 font-bold tracking-tight md:text-2xl">
 		Activate<br /> Your Business!
 	</p>
-	<button onclick={openModal}>Click Me</button>
-	<div class="flex flex-1 justify-end"></div>
+
+	<div class="flex flex-1 justify-end">
+		<CtaButton buttonText={'Find Out More'} buttonAction={openModal}></CtaButton>
+	</div>
 </header>

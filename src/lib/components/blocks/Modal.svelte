@@ -1,7 +1,7 @@
 <script>
 	import { fade } from 'svelte/transition';
 
-	import CloseButton from '../elements/CloseButton.svelte';
+	import CloseButton from '$lib/components/elements/CloseButton.svelte';
 	import { closeModal, modalState } from '$lib/state/modalState.svelte';
 </script>
 
