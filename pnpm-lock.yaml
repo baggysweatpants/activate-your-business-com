@@ -7,6 +7,10 @@ settings:
 importers:
 
   .:
+    dependencies:
+      '@directus/sdk':
+        specifier: ^20.0.0
+        version: 20.0.0
     devDependencies:
       '@eslint/compat':
         specifier: ^1.2.5
@@ -77,6 +81,10 @@ packages:
   '@ampproject/remapping@2.3.0':
     resolution: {integrity: sha512-30iZtAPgz+LTIYoeivqYo853f02jBYSd5uGnGpkFV0M3xOt9aN73erkgYAmZU43x4VfqcnLxW9Kpg3R5LC4YYw==}
     engines: {node: '>=6.0.0'}
+
+  '@directus/sdk@20.0.0':
+    resolution: {integrity: sha512-DoKggMNaVWiKC2bU5BY+Nf6ia2Yz7hrKte0ZtSPXQVkl2mxwDtM0gLfOI6xxVY1CfnvyxJDu+d+21VjI4GYdyw==}
+    engines: {node: '>=22'}
 
   '@esbuild/aix-ppc64@0.25.6':
     resolution: {integrity: sha512-ShbM/3XxwuxjFiuVBHA+d3j5dyac0aEVVq1oluIDf71hUw0aRF59dV/efUsIwFnR6m8JNM2FjZOzmaZ8yG61kw==}
@@ -1454,6 +1462,8 @@ snapshots:
     dependencies:
       '@jridgewell/gen-mapping': 0.3.12
       '@jridgewell/trace-mapping': 0.3.29
+
+  '@directus/sdk@20.0.0': {}
 
   '@esbuild/aix-ppc64@0.25.6':
     optional: true

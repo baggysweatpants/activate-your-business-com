@@ -40,5 +40,8 @@
 		"onlyBuiltDependencies": [
 			"esbuild"
 		]
+	},
+	"dependencies": {
+		"@directus/sdk": "^20.0.0"
 	}
 }
