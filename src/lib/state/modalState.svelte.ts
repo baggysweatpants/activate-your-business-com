@@ -1,5 +1,5 @@
-export const modalState = $state({
-    visible: true,
+export const modalState = $state<{visible: boolean}>({
+    visible: false,
 })
 
 export function closeModal() {
