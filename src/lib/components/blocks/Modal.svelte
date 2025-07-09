@@ -2,6 +2,7 @@
 	import { fade } from 'svelte/transition';
 
 	import CloseButton from '$lib/components/elements/CloseButton.svelte';
+	import Form from '$lib/components/elements/Form.svelte';
 	import { closeModal, modalState } from '$lib/state/modalState.svelte';
 </script>
 
@@ -17,8 +18,8 @@
 				onclick={closeModal}><CloseButton></CloseButton></button
 			>
 			<!-- <h2 class="py-5 pt-10 text-2xl md:text-4xl">{@html ctaBlock.form_heading}</h2>
-			<div class="pb-10">{@html ctaBlock.form_content}</div>
-			<Form></Form> -->
+			<div class="pb-10">{@html ctaBlock.form_content}</div> -->
+			<Form></Form>
 		</div>
 	</div>
 {/if}
