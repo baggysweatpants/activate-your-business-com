@@ -13,7 +13,7 @@
 		},
 		{
 			id: 'zip',
-			label: 'ZIP*',
+			label: 'Postcode*',
 			input: 'text'
 		},
 		{

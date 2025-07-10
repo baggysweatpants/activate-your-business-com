@@ -1,9 +1,9 @@
 <script>
 	import { fade } from 'svelte/transition';
-
 	import CloseButton from '$lib/components/elements/CloseButton.svelte';
 	import Form from '$lib/components/elements/Form.svelte';
 	import { closeModal, modalState } from '$lib/state/modalState.svelte';
+	let { ctaBlock } = $props();
 </script>
 
 {#if modalState.visible}
@@ -17,8 +17,8 @@
 				class="absolute top-5 right-5 z-50 h-10 w-10 cursor-pointer transition-transform duration-300 hover:rotate-90"
 				onclick={closeModal}><CloseButton></CloseButton></button
 			>
-			<!-- <h2 class="py-5 pt-10 text-2xl md:text-4xl">{@html ctaBlock.form_heading}</h2>
-			<div class="pb-10">{@html ctaBlock.form_content}</div> -->
+			<h2 class="py-5 pt-10 text-2xl md:text-4xl">{@html ctaBlock.form_heading}</h2>
+			<div class="pb-10">{@html ctaBlock.form_content}</div>
 			<Form></Form>
 		</div>
 	</div>

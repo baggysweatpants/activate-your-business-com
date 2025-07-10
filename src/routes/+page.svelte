@@ -26,7 +26,7 @@
 	<title>{metaData?.title || 'Activate Your Business'}</title>
 </svelte:head>
 
-<Modal />
+<Modal {ctaBlock} />
 
 {#if heroBlock}
 	<Hero {heroBlock} />
