@@ -2,28 +2,42 @@
 	import CardGroup from '$lib/components/blocks/CardGroup.svelte';
 	import Carousel from '$lib/components/blocks/Carousel.svelte';
 	import Hero from '$lib/components/blocks/Hero.svelte';
-	let { data } = $props();
 	import Modal from '$lib/components/blocks/Modal.svelte';
+	import FallbackBlock from '$lib/components/blocks/FallbackBlock.svelte';
 
-	let metaData = data.page;
+	let { data } = $props();
+
+	let metaData = data?.page || {};
 
 	function getBlock(blockName: string) {
-		return data.page.blocks.find((block: any) => block.collection === blockName)?.item;
+		return data?.page?.blocks?.find((block: any) => block.collection === blockName)?.item;
 	}
 
 	let heroBlock = getBlock('block_hero');
 	let cardBlock = getBlock('block_cardgroup');
 	let carouselBlock = getBlock('block_carousel');
-
-	console.log(data.page.blocks);
 </script>
 
 <svelte:head>
-	<title>{metaData.title}</title>
+	<title>{metaData?.title || 'Activate Your Business'}</title>
 </svelte:head>
-<Modal></Modal>
-<Hero {heroBlock}></Hero>
-<CardGroup {cardBlock}></CardGroup>
+
+<Modal />
+
+{#if heroBlock}
+	<Hero {heroBlock} />
+{:else}
+	<FallbackBlock blockType="block_hero" blockData={null} />
+{/if}
+
+{#if cardBlock}
+	<CardGroup {cardBlock} />
+{:else}
+	<FallbackBlock blockType="block_cardgroup" blockData={null} />
+{/if}
+
 {#if carouselBlock}
-	<Carousel {carouselBlock}></Carousel>
+	<Carousel {carouselBlock} />
+{:else}
+	<FallbackBlock blockType="block_carousel" blockData={null} />
 {/if}
