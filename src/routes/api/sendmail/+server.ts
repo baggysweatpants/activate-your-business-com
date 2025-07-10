@@ -93,8 +93,8 @@ You have received a new inquiry from activate-your-business.co.uk.
 					},
 					Html: {
 						Data: `
-<h3>Neue Anfrage über yourownbigthing.de</h3>
-<hr style="width:50%;text-align:left">
+<h3>New Inquiry from activate-your-business.co.uk</h3>
+<hr style="width:50%;text-align:left;margin-left:0">
 <p><strong>Name:</strong> ${name}</p>
 <p><strong>Street:</strong> ${street}</p>
 <p><strong>Town:</strong> ${ort}</p>
