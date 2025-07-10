@@ -4,6 +4,8 @@
 	import Hero from '$lib/components/blocks/Hero.svelte';
 	import Modal from '$lib/components/blocks/Modal.svelte';
 	import FallbackBlock from '$lib/components/blocks/FallbackBlock.svelte';
+	import FaqBlock from '$lib/components/blocks/FaqBlock.svelte';
+	import Footer from '$lib/components/layout/Footer.svelte';
 
 	let { data } = $props();
 
@@ -16,6 +18,7 @@
 	let heroBlock = getBlock('block_hero');
 	let cardBlock = getBlock('block_cardgroup');
 	let carouselBlock = getBlock('block_carousel');
+	let faqBlock = getBlock('block_faq');
 </script>
 
 <svelte:head>
@@ -40,4 +43,10 @@
 	<Carousel {carouselBlock} />
 {:else}
 	<FallbackBlock blockType="block_carousel" blockData={null} />
+{/if}
+
+{#if faqBlock}
+	<FaqBlock {faqBlock}></FaqBlock>
+{:else}
+	<FallbackBlock blockType="block_faq" blockData={null} />
 {/if}

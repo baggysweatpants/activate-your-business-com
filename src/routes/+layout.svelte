@@ -1,4 +1,5 @@
 <script lang="ts">
+	import Footer from '$lib/components/layout/Footer.svelte';
 	import Header from '$lib/components/layout/Header.svelte';
 	import '../app.css';
 
@@ -11,5 +12,6 @@
 	<Header></Header>
 	<div id="twelve-grid" class="bg-offwhite max-w-8xl mx-auto grid grid-cols-12">
 		{@render children()}
+		<Footer></Footer>
 	</div>
 </div>
