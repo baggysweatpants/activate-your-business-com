@@ -12,8 +12,8 @@
 	<div class="text-offwhite mx-auto flex flex-col items-center gap-5 md:w-1/2">
 		<p class="text-center">Activate Your Business is an iniative by miha bodytec UK.</p>
 		<p class="text-center">
-			miha bodytec UK is responsible for the technical implementation and operation of this site.
-			Their <a
+			The miha bodytec GmbH is responsible for the technical implementation and operation of this
+			site. Their <a
 				class="underline"
 				href="https://www.miha-bodytec.com/en/privacy-policy"
 				target="_blank">Privacy Policy</a

@@ -1,11 +1,11 @@
 <script lang="ts">
 	import CardGroup from '$lib/components/blocks/CardGroup.svelte';
-	import Carousel from '$lib/components/blocks/Carousel.svelte';
 	import Hero from '$lib/components/blocks/Hero.svelte';
 	import Modal from '$lib/components/blocks/Modal.svelte';
 	import FallbackBlock from '$lib/components/blocks/FallbackBlock.svelte';
 	import FaqBlock from '$lib/components/blocks/FaqBlock.svelte';
-	import Footer from '$lib/components/layout/Footer.svelte';
+	import CarouselBlock from '$lib/components/blocks/CarouselBlock.svelte';
+	import CtaBlock from '$lib/components/blocks/CtaBlock.svelte';
 
 	let { data } = $props();
 
@@ -19,6 +19,7 @@
 	let cardBlock = getBlock('block_cardgroup');
 	let carouselBlock = getBlock('block_carousel');
 	let faqBlock = getBlock('block_faq');
+	let ctaBlock = getBlock('block_cta');
 </script>
 
 <svelte:head>
@@ -40,13 +41,19 @@
 {/if}
 
 {#if carouselBlock}
-	<Carousel {carouselBlock} />
+	<CarouselBlock {carouselBlock} />
 {:else}
 	<FallbackBlock blockType="block_carousel" blockData={null} />
 {/if}
 
 {#if faqBlock}
 	<FaqBlock {faqBlock}></FaqBlock>
+{:else}
+	<FallbackBlock blockType="block_faq" blockData={null} />
+{/if}
+
+{#if ctaBlock}
+	<CtaBlock {ctaBlock}></CtaBlock>
 {:else}
 	<FallbackBlock blockType="block_faq" blockData={null} />
 {/if}
