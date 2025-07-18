@@ -1,5 +1,12 @@
 import { json } from '@sveltejs/kit';
-import { AMZ_REGION, AMZ_ACCESS_KEY_ID, AMZ_SECRET_ACCESS_KEY, AMZ_SENDER_EMAIL, AMZ_RECIPIENT_EMAIL, AMZ_CC_EMAIL } from '$env/static/private';
+import {
+	AMZ_REGION,
+	AMZ_ACCESS_KEY_ID,
+	AMZ_SECRET_ACCESS_KEY,
+	AMZ_SENDER_EMAIL,
+	AMZ_RECIPIENT_EMAIL,
+	AMZ_CC_EMAIL
+} from '$env/static/private';
 import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
 import type { RequestEvent } from '../../$types';
 
@@ -42,7 +49,8 @@ export async function POST({ request }: RequestEvent) {
 		const name = (formData.get('name') as string)?.trim();
 		const street = (formData.get('street') as string)?.trim();
 		const zip = (formData.get('zip') as string)?.trim();
-		const ort = (formData.get('ort') as string)?.trim();
+		const state = (formData.get('state') as string)?.trim();
+		const city = (formData.get('city') as string)?.trim();
 		const email = (formData.get('email') as string)?.trim();
 		const phone = (formData.get('phone') as string)?.trim();
 		const honeypot = formData.get('website');
@@ -51,7 +59,7 @@ export async function POST({ request }: RequestEvent) {
 			return json({ success: true });
 		}
 
-		if (!name || !street || !ort || !zip || !email || !phone) {
+		if (!name || !street || !city || !zip || !state || !email || !phone) {
 			return json(
 				{ success: false, message: 'All fields marked with an * are required.' },
 				{ status: 400 }
@@ -68,10 +76,10 @@ export async function POST({ request }: RequestEvent) {
 		}
 
 		const emailParams = {
-			Source: AMZ_SENDER_EMAIL as string || 'noreply@activate-your-business.co.uk',
+			Source: (AMZ_SENDER_EMAIL as string) || 'noreply@activate-your-business.com',
 			Destination: {
-				ToAddresses: [AMZ_RECIPIENT_EMAIL as string ||"uk-info@miha-bodytec.com"],
-				CcAddresses: [AMZ_CC_EMAIL as string || 'leads@miha-bodytec.de'],
+				ToAddresses: [(AMZ_RECIPIENT_EMAIL as string) || 'info@miha-bodytec.us'],
+				CcAddresses: [(AMZ_CC_EMAIL as string) || 'leads@miha-bodytec.de']
 			},
 			ReplyToAddresses: [email],
 			Message: {
@@ -83,11 +91,11 @@ export async function POST({ request }: RequestEvent) {
 					Text: {
 						Data: `
 Name: ${name}
-Address: ${street}, ${ort}, ${zip} 
+Address: ${street}, ${city}, ${zip}, ${state}
 Email: ${email}
 Phone: ${phone}
                 
-You have received a new inquiry from activate-your-business.co.uk.
+You have received a new inquiry from activate-your-business.com.
                     `,
 						Charset: 'UTF-8'
 					},
@@ -97,8 +105,9 @@ You have received a new inquiry from activate-your-business.co.uk.
 <hr style="width:50%;text-align:left;margin-left:0">
 <p><strong>Name:</strong> ${name}</p>
 <p><strong>Street:</strong> ${street}</p>
-<p><strong>Town:</strong> ${ort}</p>
-<p><strong>Postcode:</strong> ${zip}</p>
+<p><strong>City:</strong> ${city}</p>
+<p><strong>ZIP:</strong> ${zip}</p>
+<p><strong>State:</strong> ${state}</p>
 <p><strong>Phone:</strong> ${phone}</p>
 <p><strong>Email:</strong> ${email}</p>
                 `,

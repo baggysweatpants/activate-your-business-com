@@ -13,12 +13,19 @@
 		},
 		{
 			id: 'zip',
-			label: 'Postcode*',
-			input: 'text'
+			label: 'ZIP*',
+			input: 'text',
+			isHalfWidth: true
 		},
 		{
-			id: 'ort',
-			label: 'Town*',
+			id: 'state',
+			label: 'State*',
+			input: 'text',
+			isHalfWidth: true
+		},
+		{
+			id: 'city',
+			label: 'City*',
 			input: 'text'
 		},
 		{
@@ -72,17 +79,19 @@
 </script>
 
 <form id="kontaktformular" class="flex flex-col" method="POST" onsubmit={handleSubmit}>
-	{#each formIds as formElement}
-		<div class="pb-2">
-			<label class="font-bold" for={formElement.id}>{formElement.label}</label><br />
-			<input
-				name={formElement.id}
-				type={formElement.input}
-				class="focus:outline-ice border-dark-blue w-full rounded-lg p-2 focus:border-none"
-				required
-			/>
-		</div>
-	{/each}
+	<div class="grid grid-cols-2 gap-4">
+		{#each formIds as formElement}
+			<div class={`pb-2 ${formElement.isHalfWidth ? 'col-span-1' : 'col-span-2'}`}>
+				<label class="font-bold" for={formElement.id}>{formElement.label}</label><br />
+				<input
+					name={formElement.id}
+					type={formElement.input}
+					class="focus:outline-ice border-dark-blue w-full rounded-lg p-2 focus:border-none"
+					required
+				/>
+			</div>
+		{/each}
+	</div>
 	{#if success}
 		<div class="fixed -top-1.5 left-0 flex h-screen w-screen justify-center overflow-hidden">
 			<Confetti
