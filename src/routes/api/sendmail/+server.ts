@@ -39,7 +39,7 @@ export async function POST({ request }: RequestEvent) {
 			return json(
 				{
 					success: false,
-					message: 'E-Mail-Service ist nicht konfiguriert. Bitte kontaktieren Sie uns direkt.'
+					message: 'The email service is not configured. Please contact us directly.'
 				},
 				{ status: 500 }
 			);
@@ -101,7 +101,7 @@ You have received a new inquiry from activate-your-business.com.
 					},
 					Html: {
 						Data: `
-<h3>New Inquiry from activate-your-business.co.uk</h3>
+<h3>New Inquiry from activate-your-business.com</h3>
 <hr style="width:50%;text-align:left;margin-left:0">
 <p><strong>Name:</strong> ${name}</p>
 <p><strong>Street:</strong> ${street}</p>
